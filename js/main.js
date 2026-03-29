@@ -7,16 +7,25 @@ let total = document.getElementById('total');
 let count = document.getElementById('count');
 let category = document.getElementById('category');
 let submit = document.getElementById('submit');
+const inputField = document.getElementById('category');
 let mood ='create';
 let tmp;
 // console.log(title,price,taxes,ads,discount,total,count,category,submit);
 //getTotal()
 
+
+inputField.addEventListener('input', function() {
+    // Regex يشمل الأرقام العربية والإنجليزية
+    // [0-9] للأرقام العالمية
+    // [0123456789] 
+    // [٠-٩] للأرقام العربية (Western Arabic)
+    this.value = this.value.replace(/[0-9٠-٩]/g, '');
+});
 function getTotal(){
    if(price.value !=''){
     let result = (+price.value+ +taxes.value+ +ads.value)- +discount.value;
  total.innerHTML=result;
- total.style.background ='#040';
+ total.style.background ='#0077ff';
 }else{
     total.innerHTML ='';
     total.style.background ='#a00d02';
