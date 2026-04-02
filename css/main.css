@@ -151,20 +151,111 @@ button:hover{
     justify-content: space-between;
 
 }
-.btnSearch button{
-    width: 45%;
-    height: 30px;
-    margin: 5px 55px;
+/* للشاشات الكبيرة (الكمبيوتر) */
+@media (min-width: 768px) {
+    .btnSearch button {
+        width: 45%;
+        margin: 5px;
+    }
 }
-table{
+
+/* للشاشات الصغيرة (الموبايل) */
+@media (max-width: 767px) {
+    .btnSearch button {
+        width: 40%;      /* الزرار بياخد عرض الشاشة كلها تقريباً في الموبايل */
+        margin: 10px auto;
+        height: 45px;    /* تكبير المساحة عشان صباع المستخدم */
+    }
+}
+
+/* التصميم الأساسي للكمبيوتر */
+table {
     width: 100%;
     text-align: center;
-    margin: 10px 0; 
+    margin: 10px 0;
+    border-collapse: collapse;
 }
-table th{
+
+table th {
     text-transform: uppercase;
-} 
-th,td {
-    padding: 5px;
+    background-color: #932a2a;
 }
+
+th, td {
+    padding: 10px;
+    border: 1px solid #ddd;
+}
+
+/* --- الميديا كويري للموبايل --- */
+@media screen and (max-width: 768px) {
+    
+    /* إخفاء رأس الجدول الأصلي */
+    table thead, table th {
+        display: none;
+    }
+
+    /* تحويل الجدول لقطع منفصلة */
+    table, table tbody, table tr, table td {
+        display: block;
+        width: 95%;
+        margin-left: 15px;
+    }
+
+    table tr {
+        margin-bottom: 20px;
+        border: 2px solid #ccc;
+    }
+
+    table td[data-label="Update"], 
+    table td[data-label="Delete"] {
+        padding-left: 10px; /* بنلغي المسافة الكبيرة اللي على الشمال */
+        text-align: center; /* بنوسط الزرار */
+    }
+
+    /* نلغي ظهور كلمة Update/Delete اللي على الشمال عشان الزرار نفسه فيه الكلمة */
+    table td[data-label="Update"]::before,
+    table td[data-label="Delete"]::before {
+        content: ""; 
+    }
+
+    /* تنسيق الأزرار نفسها */
+    table td button {
+        width: 100%;       /* الزرار ياخد عرض الكارت كله */
+        padding: 10px;     /* نكبر مساحة الضغط */
+        font-size: 16px;   /* نوضح الخط */
+        margin-top: 5px;
+        border-radius: 4px; /* لمسة جمالية */
+        border: none;
+        cursor: pointer;
+        color: white;
+    }
+
+    /* ألوان تميز الأزرار */
+    #update {
+        background-color: #3b3b3b; /* أزرق مثلاً */
+    }
+
+    #delete {
+        background-color: #dc3545; /* أحمر للحذف */
+    }
+}
+
+    /* إظهار اسم العمود باستخدام data-label */
+    table td::before {
+        content: attr(data-label);
+        position: absolute;
+        left: 10px;
+        width: 20%;
+        text-align: center;
+        font-weight: bold;
+        text-transform: uppercase;
+        color: #c8c4c4;
+  background:linear-gradient(#0077ff,#080e10,#0077ff) ;
+    }
+
+    /* تنسيق أزرار الأكشن في الموبايل */
+    table td button {
+        width: 100%;
+        padding: 5px;
+    }
 

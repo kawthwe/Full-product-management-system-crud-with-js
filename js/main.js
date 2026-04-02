@@ -101,21 +101,24 @@ function showData(){
     let table='';
 
     for( let i=0 ;i < dataPro.length; i++){
-        table += ` <tr>
-            <td>${i+1}</td>
-            <td>${dataPro[i].title}</td>
-            <td>${dataPro[i].price}</td>
-            <td>${dataPro[i].taxes}</td>
-            <td>${dataPro[i].ads}</td>
-            <td>${dataPro[i].discount}</td>
-            <td>${dataPro[i].total}</td>
-            <td>${dataPro[i].category}</td>
-          
-            <td><button onclick='updateData (${i})'  id="update">update</button></td>
-
-            <td><button  onclick='deleteData (${i})' id="delete">delete</button></td>
-          
-        </tr>`;
+       table += `
+    <tr>
+        <td data-label="ID">${i + 1}</td>
+        <td data-label="Title">${dataPro[i].title}</td>
+        <td data-label="Price">${dataPro[i].price}</td>
+        <td data-label="Taxes">${dataPro[i].taxes}</td>
+        <td data-label="Ads">${dataPro[i].ads}</td>
+        <td data-label="Discount">${dataPro[i].discount}</td>
+        <td data-label="Total">${dataPro[i].total}</td>
+        <td data-label="Category">${dataPro[i].category}</td>
+        
+        <td data-label="Update">
+            <button onclick='updateData(${i})' id="update">update</button>
+        </td>
+        <td data-label="Delete">
+            <button onclick='deleteData(${i})' id="delete">delete</button>
+        </td>
+    </tr>`;
     }
     document.getElementById("table").innerHTML=table;
     //delertAll btn
